@@ -1,24 +1,16 @@
-#include "stdio.h";
-#include "math.h";
+#include "main.h"
+/**
+ * _abs - returns absolute value of an int
+ * @n: integer from which to get an absolute value
+ * Return: Void.
+ */
 
-int _abs(num){
-    int result = sqrt(num*num);
-
-    return result;
-}
-
-int main(void)
+int _abs(int n)
 {
-    int r;
 
-    r = _abs(-1);
-    printf("%d\n", r);
-    r = _abs(0);
-    printf("%d\n", r);
-    r = _abs(1);
-    printf("%d\n", r);
-    r = _abs(-98);
-    printf("%d\n", r);
-
-    return (0);
+	if (n < 0)
+	{
+		return (n * -1);
+	}
+	return (n);
 }
