@@ -5,23 +5,31 @@
  * @s: string to be encoded
  * Return: the resulting strring
  */
-char *rot13(char *s)
+char *add_strings(char *num1, char *num2, char *r, int *r_index)
 {
-	int i, j;
+	int num, tens = 0;
 
-	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-	for (i = 0; s[i] != '\0'; i++)
+	for(; *num1 && *num2, num1-- , num2--, r_index--)
 	{
-		for (j = 0; a[j] != '\0'; j++)
-		{
-			if (s[i] == a[j])
-			{
-				s[i] = b[j];
-				break;
-			}
-	    }
+		num = (*num1 - '0') + (*num2 - '0');
+		num += tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
-	return (s);
+
+	for(; *num1, num1--, r_index--)
+	{
+		num = (*num1 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
+	}
+
+	for(; *num2, num2--, r_index--)
+	{
+		num = (*num2 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
+	}
+	
+
 }
